@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  handleMediaItemDelete(mediaItem) {}
+  
   firstMediaItem = {
     id: 1,
     name: 'Firebug',
