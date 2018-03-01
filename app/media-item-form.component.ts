@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
+
+import { MediaItemService } from './media-item.service';
 
 @Component({
   selector: 'mw-media-item-form',
@@ -9,16 +11,21 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class MediaItemFormComponent {
   form;
 
+  constructor(
+    private formBuilder: FormBuilder,
+    private mediaItemService: MediaItemService
+  ) {}
+
   ngOnInit() {
-    this.form = new FormGroup({
-      medium: new FormControl('Movies'),
+    this.form = this.formBuilder.group({
+      medium: this.formBuilder.control('Movies'),
       // compose может собирать несколько условий и будет проходить только если все прошли
-      name: new FormControl('', Validators.compose([
+      name: this.formBuilder.control('', Validators.compose([
         Validators.required,
         Validators.pattern('[\\w\\-\\s\\/]+')
       ])),
-      category: new FormControl(''),
-      year: new FormControl('', this.yearValidator),
+      category: this.formBuilder.control(''),
+      year: this.formBuilder.control('', this.yearValidator),
     });
   }
 
@@ -39,11 +46,13 @@ export class MediaItemFormComponent {
         'year': {
           min: minYear,
           max: maxYear
-        };
+        }
+      }
     }
   }
 
   onSubmitForm(mediaItem) {
+    this.mediaItemService.add(mediaItem);
     console.log(mediaItem);
   }
 }

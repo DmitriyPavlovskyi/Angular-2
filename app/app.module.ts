@@ -8,6 +8,7 @@ import { MediaItemListComponent } from './media-item-list.component';
 import { FavoriteDirective } from './favorite.directive';
 import { MediaItemFormComponent } from './media-item-form.component';
 import { CategoryListPipe } from './category-list.pipe';
+import { MediaItemService } from './media-item.service';
 
 @NgModule({
   //Импорт необходимых модулей
@@ -24,9 +25,13 @@ import { CategoryListPipe } from './category-list.pipe';
     MediaItemFormComponent,
     CategoryListPipe
   ],
+  // Позволяет делать dependency injection
+  providers: [
+    MediaItemService
+  ],
   // Помогает ангулару понять какой компонент или компоненты являются корневыми, чтоб использовать бутстрап
   bootstrap: [
-  AppComponent
+    AppComponent
   ]
 })
 export class AppModule {}
