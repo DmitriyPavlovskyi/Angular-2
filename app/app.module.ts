@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MediaItemComponent } from './media-item.component';
@@ -13,7 +13,7 @@ import { CategoryListPipe } from './category-list.pipe';
   //Импорт необходимых модулей
   imports: [
     BrowserModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   // Позволяет использовать компоненты, директивы и пайпы в этом модуле
   declarations: [
