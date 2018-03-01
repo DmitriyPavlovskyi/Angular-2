@@ -34,5 +34,6 @@
       <input type="text" name="year" id="year" maxlength="4" formControlName="year">
     </li>
   </ul>
-  <button type="submit">Save</button>
+  <!-- form.valid будем смотреть все ли поля валидные -->
+  <button type="submit" [disabled]="!form.valid">Save</button>
 </form>
