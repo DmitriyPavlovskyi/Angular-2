@@ -13,10 +13,12 @@ export class MediaItemListComponent {
   constructor(private mediaItemService: MediaItemService) {}
 
   ngOnInit() {
+    // Получаем данные из сервиса при инициализации
     this.mediaItems = this.mediaItemService.get();
   }
 
   onMediaItemDelete(mediaItem) {
+    // Удаляем данные через сервис
     this.mediaItemService.delete(mediaItem);
   }
 }

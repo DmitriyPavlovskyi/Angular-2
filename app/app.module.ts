@@ -10,6 +10,10 @@ import { MediaItemFormComponent } from './media-item-form.component';
 import { CategoryListPipe } from './category-list.pipe';
 import { MediaItemService } from './media-item.service';
 
+const lookupLists = {
+  mediums: ['Movies', 'Series']
+};
+
 @NgModule({
   //Импорт необходимых модулей
   imports: [
@@ -27,7 +31,8 @@ import { MediaItemService } from './media-item.service';
   ],
   // Позволяет делать dependency injection
   providers: [
-    MediaItemService
+    MediaItemService,
+    { provide: 'lookupListToken', useValue: lookupLists }
   ],
   // Помогает ангулару понять какой компонент или компоненты являются корневыми, чтоб использовать бутстрап
   bootstrap: [
