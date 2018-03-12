@@ -9,10 +9,7 @@ import { FavoriteDirective } from './favorite.directive';
 import { MediaItemFormComponent } from './media-item-form.component';
 import { CategoryListPipe } from './category-list.pipe';
 import { MediaItemService } from './media-item.service';
-
-const lookupLists = {
-  mediums: ['Movies', 'Series']
-};
+import { lookupListToken, lookupLists } from './providers';
 
 @NgModule({
   //Импорт необходимых модулей
@@ -32,7 +29,7 @@ const lookupLists = {
   // Позволяет делать dependency injection
   providers: [
     MediaItemService,
-    { provide: 'lookupListToken', useValue: lookupLists }
+    { provide: lookupListToken, useValue: lookupLists }
   ],
   // Помогает ангулару понять какой компонент или компоненты являются корневыми, чтоб использовать бутстрап
   bootstrap: [
